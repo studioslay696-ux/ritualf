@@ -1466,11 +1466,14 @@ ${habitsList}`.trim();
         throw new Error(`HTTP ${response.status} — ${err}`);
       }
 
-      const json   = await response.json();
-      const result = json?.choices?.[0]?.message?.content?.trim()
-                     ?? 'Reponse vide recue du modele.';
+      const json = await response.json();
+console.log("Réponse StepFun brute :", json); // ← AJOUTE ICI
 
-      _setLoading(false);
+const result = json?.choices?.[0]?.message?.content?.trim()
+               ?? 'Reponse vide recue du modele.';
+
+_setLoading(false);
+
       return result;
 
     } catch (error) {
